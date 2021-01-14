@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/d',function(){
-    return view('admin.category.manage');
-});
+// Route::get('/d',function(){
+//     return view('admin.category.manage');
+// });
 Route::middleware(['is_admin'])->group(function(){
     Route::get('/d',function(){
         return view('admin.category.manage');
