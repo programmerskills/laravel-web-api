@@ -20,9 +20,15 @@ Route::get('/', function () {
 //     return view('admin.category.manage');
 // });
 Route::middleware(['is_admin'])->group(function(){
-    Route::get('/d',function(){
-        return view('admin.category.manage');
+    Route::get('/dashboard',function(){
+        return view('admin.dashboard.dashboard');
     });
+
+    // category
+    Route::get('/category/addnew',function(){
+        return view('admin.category.add');
+    });
+    Route::post('/add','API\ADMIN\CategoryController@add');
     Route::post('/logout','\Auth\LoginController@logout');
 });
 

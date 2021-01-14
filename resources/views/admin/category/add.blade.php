@@ -15,15 +15,18 @@
                                         </div> -->
                                     </div>
                                 </div>
+                                @if($success){{$success}}@endif
                                 <div class="sparkline11-graph">
                                     <div class="input-knob-dial-wrap">
                                         <div class="row">
-                                            <form>
+                                            <form method="post" action="{{url('/add')}}">
+                                            @csrf
                                             <div class="col-lg-12">
                                                 <div class="chosen-select-single mg-b-20">
                                                     <label>Basic Select</label>
-                                                    <input type="text" name="" class="form-control">
+                                                    <input type="text" name="catename" class="form-control">
                                                 </div>
+                                                <input type="submit" value="Add New" class="form-control">
                                             </div>
                                             </form>
                                         </div>
