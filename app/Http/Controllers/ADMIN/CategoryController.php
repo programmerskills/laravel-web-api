@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API\ADMIN;
+namespace App\Http\Controllers\ADMIN;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller; 
@@ -10,19 +10,30 @@ use DB;
 use Illuminate\Support\Str;
 
 class CategoryController extends Controller
-{
-    public $successStatus = 200;
-    function add(Request $request)
+{   
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
-        $validator = Validator::make($request->all(),
-        [
-            'catename'=>'required|unique:categories,catename',
-        ]);
-        //return $request()->all();
-        if($validator->fails())
+        $this->middleware('auth');
+    }
+    
+    function addcategory(Request $request)
+    {   
+        if($request->isMethod('post'))
         {
-            return response()->json(['verror'=>$validator->errors()],401);
-        }
+            $this->validate($request,
+            [    
+            'catename'=>'required|unique:categories,catename',
+            'content'=>'required',
+            'cateimage'=>'required|image|mimes:jpeg,jpg,png',
+            ],[
+                'catename.required'=>'Category Name required'
+            ]);
+        //return $request()->all();
         $addData=array(
             'catename'=>$request->input('catename'),
             'cateslug'=>Str::slug($request->input('catename'),'-'),
@@ -37,11 +48,17 @@ class CategoryController extends Controller
         }
         if(DB::table('categories')->insert($addData))
         {
-            return response()->json(['success'=>'Added Category Records'],$this-> successStatus);  
+            return back()->with(['success','Added Category Records']);
         }
         else
         {
-            return response()->json(['error'=>'Unable to Add Category'],$this-> successStatus);
+            return back()->with(['error','Unable to Add Category']);
         }
+        }
+        else{
+            return view('admin.category.add');
+        }
+        
+        
     }
 }

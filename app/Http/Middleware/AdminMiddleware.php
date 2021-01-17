@@ -13,6 +13,7 @@ class AdminMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
+    
     public function handle($request, Closure $next)
     {
         if(Auth::check() && Auth::user()->role==1)

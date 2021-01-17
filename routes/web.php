@@ -16,23 +16,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-// Route::get('/d',function(){
-//     return view('admin.category.manage');
-// });
-Route::middleware(['is_admin'])->group(function(){
-    Route::get('/dashboard',function(){
-        return view('admin.dashboard.dashboard');
-    });
 
-    // category
-    Route::get('/category/addnew',function(){
-        return view('admin.category.add');
-    });
-    Route::post('/add','API\ADMIN\CategoryController@add');
-    Route::post('/logout','\Auth\LoginController@logout');
+Route::group(['prefix'=>'admin','middlware'=>['auth','is_admin']],function(){
+// Route::get('/dashboard','ADMIN\DashboardController@index')->name('dashboard');
+// category
+Route::match(['get','post'],'/addcategory','ADMIN\CategoryController@addcategory');
+
+//logout 
+Route::post('/logout','\Auth\LoginController@logout');
+
 });
 
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin/dashboard', 'HomeController@index')->name('home');

@@ -1,5 +1,9 @@
 @extends('admin.layout.masterlayout')
+    @section('pagename')
+    Add Category
+    @endsection
 @section('content')
+<script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
                      <div class="container-fluid">
                     <div class="row">
                        
@@ -15,18 +19,30 @@
                                         </div> -->
                                     </div>
                                 </div>
-                                @if($success){{$success}}@endif
+                             
                                 <div class="sparkline11-graph">
                                     <div class="input-knob-dial-wrap">
                                         <div class="row">
-                                            <form method="post" action="{{url('/add')}}">
+                                            <form method="post" action="{{url('/admin/addcategory')}}">
                                             @csrf
                                             <div class="col-lg-12">
                                                 <div class="chosen-select-single mg-b-20">
-                                                    <label>Basic Select</label>
-                                                    <input type="text" name="catename" class="form-control">
+                                                    <label>Category</label>
+                                                    <input type="text" name="catename" class="form-control" value="{{old('catename')}}">
+                                                    <span style="color:red;">{{ $errors->first('catename') }}</span>
                                                 </div>
-                                                <input type="submit" value="Add New" class="form-control">
+                                                <div class="chosen-select-single mg-b-20">
+                                                    <label>content</label>
+                                                    <textarea class="form-control" id="content" name="content" rows="4">{{old('content')}}</textarea>
+                                                    <span style="color:red;">{{ $errors->first('content') }}</span>
+                                                </div>
+                                                <div class="chosen-select-single mg-b-20">
+                                                    <label>content</label>
+                                                    <input type="file" class="form-control" name="cateimage" id="cateimage">
+                                                    <span style="color:red;">{{ $errors->first('cateimage') }}</span>
+                                                </div>
+                                                
+                                                <input type="submit" value="Add Category" class="btn btn-primary">
                                             </div>
                                             </form>
                                         </div>
@@ -36,4 +52,8 @@
                         </div>
                     </div>
                 </div>
+                <script>
+    CKEDITOR.replace( 'content' );
+    </script>
 @endsection
+
