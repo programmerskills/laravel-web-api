@@ -29,26 +29,28 @@
                                 <div class="sparkline11-graph">
                                     <div class="input-knob-dial-wrap">
                                         <div class="row">
-                                            <form method="post" action="{{url('/admin/addcategory')}}" enctype="multipart/form-data">
+                                            <form method="post" action="{{url('/admin/editcategory')}}/{{$detail->id?$detail->id:''}}" enctype="multipart/form-data">
                                             @csrf
                                             <div class="col-lg-12">
                                                 <div class="chosen-select-single mg-b-20">
                                                     <label>Category</label>
-                                                    <input type="text" name="catename" class="form-control" value="{{old('catename')}}">
+                                                    <input type="text" name="catename" class="form-control" value="{{$detail->catename?$detail->catename:old('catename')}}">
                                                     <span style="color:red;">{{ $errors->first('catename') }}</span>
                                                 </div>
                                                 <div class="chosen-select-single mg-b-20">
-                                                    <label>content</label>
-                                                    <textarea class="form-control" id="content" name="content" rows="4">{{old('content')}}</textarea>
+                                                    <label>Content</label>
+                                                    <textarea class="form-control" id="content" name="content" rows="4">{{ $detail->content?$detail->content:'' }}</textarea>
                                                     <span style="color:red;">{{ $errors->first('content') }}</span>
                                                 </div>
                                                 <div class="chosen-select-single mg-b-20">
-                                                    <label>content</label>
+                                                    <label>Image</label>
                                                     <input type="file" class="form-control" name="cateimage" id="cateimage">
                                                     <span style="color:red;">{{ $errors->first('cateimage') }}</span>
+                                                    
+                                                    <img src="{{asset('/public/uploads/category')}}/{{$detail->cateimage?$detail->cateimage:''}}" alt="" height="40" width="40">
                                                 </div>
                                                 
-                                                <input type="submit" value="Add Category" class="btn btn-primary">
+                                                <input type="submit" value="Update Category" class="btn btn-primary">
                                             </div>
                                             </form>
                                         </div>
