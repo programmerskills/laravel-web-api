@@ -15,7 +15,14 @@
                                         </div> -->
                                     </div>
                                 </div>
-                                @if($success){{$success}}@endif
+                               
+                                <script>
+                                if(json($success)){
+                                    var app = @json($success);
+                                    document.write(app);
+                                }
+                                </script>
+                                
                                 <div class="sparkline11-graph">
                                     <div class="input-knob-dial-wrap">
                                         <div class="row">
