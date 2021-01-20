@@ -45,7 +45,7 @@
                                                     <td></td>
                                                     <td>{{$sn}}</td>
                                                     <td><img src="{{asset('/public/uploads/subcategory')}}/{{$res->image}}" height="40" width="40"></td>
-                                                    <td>{{$res->category->catename}}</td>
+                                                    <td>{{optional($res->category)->catename}}</td>
                                                     <td>{{ $res->subcate }}</td>
                                                     <td>{{date('d-m-Y',strtotime($res->created_at))}}</td>
                                                     <td><a href="{{url('/admin/editsubcategory')}}/{{$res->id}}">Edit</a></td>

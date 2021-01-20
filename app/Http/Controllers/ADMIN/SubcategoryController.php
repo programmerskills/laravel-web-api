@@ -62,7 +62,7 @@ class SubcategoryController extends Controller
     {
         $subcategory=Subcategory::orderBy('subcate','ASC')->get();
         $category=Subcategory::with('category')->get();
-        //return $subcategory;
+        // return $category;
         return view('admin.subcategory.manage',['subcategory'=>$subcategory,'category'=>$category]);
     }
 

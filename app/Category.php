@@ -17,4 +17,5 @@ class Category extends Model
     public static function check($catename){
         return Category::where('catename',$catename)->first();
     }
+
 }
