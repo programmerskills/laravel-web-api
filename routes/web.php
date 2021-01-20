@@ -25,6 +25,11 @@ Route::match(['get','post'],'/addcategory','ADMIN\CategoryController@addcategory
 Route::get('/managecategory','ADMIN\CategoryController@managecategory')->name('managecategory');
 Route::match(['get','post'],'/editcategory/{id}','ADMIN\CategoryController@editcategory')->name('editcategory');
 
+// subcategory
+Route::match(['get','post'],'/addsubcategory','ADMIN\SubcategoryController@addsubcategory')->name('addsubcategory');
+Route::get('/managesubcategory','ADMIN\SubcategoryController@managesubcategory')->name('managesubcategory');
+Route::match(['get','post'],'/editsubcategory/{id}','ADMIN\SubcategoryController@editsubcategory')->name('editsubcategory');
+
 //logout 
 Route::post('/logout','\Auth\LoginController@logout');
 
