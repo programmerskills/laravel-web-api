@@ -30,6 +30,11 @@ Route::match(['get','post'],'/addsubcategory','ADMIN\SubcategoryController@addsu
 Route::get('/managesubcategory','ADMIN\SubcategoryController@managesubcategory')->name('managesubcategory');
 Route::match(['get','post'],'/editsubcategory/{id}','ADMIN\SubcategoryController@editsubcategory')->name('editsubcategory');
 
+// Subchild category
+Route::match(['get','post'],'/addchildcategory','ADMIN\SubchildcategoryController@addchildcategory')->name('addchildcategory');
+
+Route::post('/subcategoryFromCategory','ADMIN\SubchildcategoryController@subcategoryFromCategory')->name('subcategoryFromCategory');
+
 //logout 
 Route::post('/logout','\Auth\LoginController@logout');
 
@@ -38,3 +43,4 @@ Route::post('/logout','\Auth\LoginController@logout');
 
 Auth::routes();
 Route::get('/admin/dashboard', 'HomeController@index')->name('home');
+?>
