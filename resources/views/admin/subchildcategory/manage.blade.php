@@ -29,6 +29,7 @@
                                                     <th data-field="state" data-checkbox="true"></th>
                                                     <th data-field="id">SN</th>
                                                     <th>Image</th>
+                                                    <th>SubChild Category</th>
                                                     <th>Category</th>
                                                     <th>Subcategory</th>
                                                     <th>Created</th>
@@ -37,18 +38,19 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {{-- {{dd($category)}}  --}}
-                                            @if(!empty($subcategory))
+                                               
+                                            @if(!empty($subchildcategories))
                                             @php $sn=1;@endphp
-                                            @foreach($subcategory as $res)
+                                            @foreach($subchildcategories as $res)
                                                 <tr>
                                                     <td></td>
                                                     <td>{{$sn}}</td>
-                                                    <td><img src="{{asset('/public/uploads/subcategory')}}/{{$res->image}}" height="40" width="40"></td>
-                                                    <td>{{optional($res->category)->catename}}</td>
-                                                    <td>{{ $res->subcate }}</td>
+                                                    <td><img src="{{asset('/public/uploads/subchild')}}/{{$res->image}}" height="40" width="40"></td>
+                                                    <td>{{$res->subchild_name}}</td>
+                                                    <td>{{$res->category->catename}}</td>
+                                                    <td>{{$res->subcategory->subcate}}</td>
                                                     <td>{{date('d-m-Y',strtotime($res->created_at))}}</td>
-                                                    <td><a href="{{url('/admin/editsubcategory')}}/{{$res->id}}">Edit</a></td>
+                                                    <td><a href="{{url('/admin/editchildcategory')}}/{{$res->id}}">Edit</a></td>
                                                 </tr>
                                                 @php $sn++; @endphp
                                                 @endforeach

@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::group(['prefix'=>'admin','middlware'=>['auth','is_admin']],function(){
 // Route::get('/dashboard','ADMIN\DashboardController@index')->name('dashboard');
 
@@ -32,11 +31,13 @@ Route::match(['get','post'],'/editsubcategory/{id}','ADMIN\SubcategoryController
 
 // Subchild category
 Route::match(['get','post'],'/addchildcategory','ADMIN\SubchildcategoryController@addchildcategory')->name('addchildcategory');
-
 Route::post('/subcategoryFromCategory','ADMIN\SubchildcategoryController@subcategoryFromCategory')->name('subcategoryFromCategory');
+Route::get('/managechildcategory','ADMIN\SubchildcategoryController@managechildcategory')->name('managechildcategory');
+Route::match(['get','post'],'/editchildcategory/{id}','ADMIN\SubchildcategoryController@editchildcategory')->name('editchildcategory');
+
 
 //logout 
-Route::post('/logout','\Auth\LoginController@logout');
+Route::post('/logout','Auth\LoginController@logout');
 
 });
 
