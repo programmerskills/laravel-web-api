@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::post('/userLogin','UserController@userLogin')->name('userLogin');
 Route::group(['prefix'=>'admin','middlware'=>['auth','is_admin']],function(){
 // Route::get('/dashboard','ADMIN\DashboardController@index')->name('dashboard');
 
