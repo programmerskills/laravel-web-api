@@ -36,6 +36,12 @@ Route::post('/subcategoryFromCategory','ADMIN\SubchildcategoryController@subcate
 Route::get('/managechildcategory','ADMIN\SubchildcategoryController@managechildcategory')->name('managechildcategory');
 Route::match(['get','post'],'/editchildcategory/{id}','ADMIN\SubchildcategoryController@editchildcategory')->name('editchildcategory');
 
+// product
+Route::match(['get','post'],'/addproduct','ADMIN\ProductController@addproduct')->name('addproduct');
+Route::match(['get','post'],'/editproduct/{id}','ADMIN\ProductController@editproduct')->name('editproduct');
+Route::get('/manageproduct','ADMIN\ProductController@manageproduct')->name('manageproduct');
+Route::post('/chidCategoryFromSubcategory','ADMIN\ProductController@chidCategoryFromSubcategory')->name('chidCategoryFromSubcategory');
+
 
 //logout 
 Route::post('/logout','Auth\LoginController@logout');

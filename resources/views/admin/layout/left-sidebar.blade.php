@@ -28,6 +28,18 @@
                                 <a href="{{url('/admin/managesubcategory')}}" class="dropdown-item">Manage</a>
                             </div>
                         </li>
+                        <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-pie-chart"></i> <span class="mini-dn">Sub Child Category</span> <span class="indicator-right-menu mini-dn"><i class="fa indicator-mn fa-angle-left"></i></span></a>
+                            <div role="menu" class="dropdown-menu left-menu-dropdown animated flipInX">
+                                <a href="{{url('/admin/addchildcategory')}}" class="dropdown-item">Add New</a>
+                                <a href="{{url('/admin/managechildcategory')}}" class="dropdown-item">Manage</a>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-pie-chart"></i> <span class="mini-dn">Product</span> <span class="indicator-right-menu mini-dn"><i class="fa indicator-mn fa-angle-left"></i></span></a>
+                            <div role="menu" class="dropdown-menu left-menu-dropdown animated flipInX">
+                                <a href="{{url('/admin/addproduct')}}" class="dropdown-item">Add New</a>
+                                <a href="{{url('/admin/manageproduct')}}" class="dropdown-item">Manage</a>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </nav>
