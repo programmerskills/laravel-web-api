@@ -18,4 +18,9 @@ class Category extends Model
         return Category::where('catename',$catename)->first();
     }
 
+    public static function allcategory()
+    {
+        return Category::orderBy('catename','ASC')->get();
+    }
+
 }

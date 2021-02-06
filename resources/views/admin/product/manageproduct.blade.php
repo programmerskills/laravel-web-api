@@ -6,11 +6,8 @@
                             <div class="sparkline13-list shadow-reset">
                                 <div class="sparkline13-hd">
                                     <div class="main-sparkline13-hd">
-                                        <h1>Projects <span class="table-project-n">Data</span> Table</h1>
+                                        <h1>Manage Products </h1>
                                         <div class="sparkline13-outline-icon">
-                                            <span class="sparkline13-collapse-link"><i class="fa fa-chevron-up"></i></span>
-                                            <span><i class="fa fa-wrench"></i></span>
-                                            <span class="sparkline13-collapse-close"><i class="fa fa-times"></i></span>
                                         </div>
                                     </div>
                                 </div>
@@ -29,28 +26,30 @@
                                                     <th data-field="state" data-checkbox="true"></th>
                                                     <th data-field="id">SN</th>
                                                     <th>Image</th>
-                                                    <th>SubChild Category</th>
+                                                    <th>Title</th>
                                                     <th>Category</th>
                                                     <th>Subcategory</th>
+                                                    <th>Child Category</th>
                                                     <th>Created</th>
                                                     <th>Action</th>
                                                     
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                               
-                                            @if(!empty($subchildcategories))
+                                              
+                                            @if(!empty($products))
                                             @php $sn=1;@endphp
-                                            @foreach($subchildcategories as $res)
+                                            @foreach($products as $res)
                                                 <tr>
                                                     <td></td>
                                                     <td>{{$sn}}</td>
-                                                    <td><img src="{{asset('/public/uploads/subchild')}}/{{$res->image}}" height="40" width="40"></td>
-                                                    <td>{{$res->subchild_name}}</td>
-                                                    <td>{{$res->category->catename}}</td>
-                                                    <td>{{$res->subcategory->subcate}}</td>
+                                                    <td><img src="{{asset('/public/uploads/product')}}/{{$res->featured_img}}" height="40" width="40"></td>
+                                                    <td>{{$res->product_title}}</td>
+                                                    <td>{{optional($res->category)->catename}}</td>
+                                                    <td>{{optional($res->subcategory)->subcate}}</td>
+                                                    <td>{{optional($res->childcategory)->subchild_name}}</td>
                                                     <td>{{date('d-m-Y',strtotime($res->created_at))}}</td>
-                                                    <td><a href="{{url('/admin/editchildcategory')}}/{{$res->id}}">Edit</a></td>
+                                                    <td><a href="{{url('/admin/editproduct')}}/{{$res->id}}">Edit</a></td>
                                                 </tr>
                                                 @php $sn++; @endphp
                                                 @endforeach

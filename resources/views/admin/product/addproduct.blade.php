@@ -94,9 +94,27 @@
                                                     <input type="file" class="form-control" name="featured_img" id="featured_img">
                                                     <span style="color:red;">{{ $errors->first('featured_img') }}</span>
                                                 </div>
-                                                
-                                                <input type="submit" value="Add Product" class="btn btn-primary">
                                             </div>
+                                                <div class="col-md-3">
+                                                    <div class="chosen-select-single mg-b-20">
+                                                        <label>Product Gallery 1</label>
+                                                        <input type="file" class="form-control" name="product_gallery[]" id="product_gallery" required>
+                                    
+                                                    </div>
+                                                </div>
+                                            <div id="progallery"></div>
+                                                <div class="col-md-3">
+                                                    <div class="chosen-select-single mg-b-20" style="margin-top: 25px;">
+                                                        <label>&nbsp;</label>
+                                                        <button type="button" class="btn btn-success" name="addmore" id="addmore">Add More</button>&nbsp;<button type="button" class="btn btn-danger" name="remove" id="remove">Remove</button>
+                                    
+                                                    </div>
+                                                </div>
+                                            
+                                            <div class="col-md-12">
+                                            <input type="submit" value="Add Product" class="btn btn-primary">
+                                            </div>
+                                            
                                             </form>
                                         </div>
                                     </div>
@@ -175,6 +193,19 @@
                 }
             });          
         });
+    });
+    // add more gallery 
+    $(document).ready(function(){
+        var i=2;
+        $('#addmore').click(function(){
+           $('#progallery').append('<div class="col-md-3"><div class="chosen-select-single mg-b-20"><label>Product Gallery '+i+'</label><input type="file" class="form-control" name="product_gallery[]" id="product_gallery" required></div></div>');
+           i=i+1;
+        });
+       
+        $('#remove').click(function(){
+            $("#progallery").children().last().remove(); 
+        });
+        
     });
     </script>
 @endsection
